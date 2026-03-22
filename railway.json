@@ -4,8 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python manage.py migrate && python manage.py seed_db && gunicorn retailsense.wsgi --bind 0.0.0.0:$PORT",
-    "healthcheckPath": "/api/ingest/status/",
+    "startCommand": "python manage.py migrate && python manage.py seed_db && gunicorn retailsense.wsgi --bind 0.0.0.0:$PORT --timeout 120 --workers 2",
     "restartPolicyType": "ON_FAILURE"
   }
 }
